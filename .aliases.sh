@@ -14,7 +14,7 @@ alias gotodot="cd $DIR"
 alias eb="vim $DIR/.aliases.sh"
 alias cb="cat $DIR/.aliases.sh"
 alias fb="cb | grep"
-alias pushbash="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; cd -;"
+alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; cd -;"
 
 ########## LS ##########
 alias ls="ls -G"
@@ -26,6 +26,9 @@ alias cla="clr"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 alias ~='cd ~'
 
 ########## Misc ##########

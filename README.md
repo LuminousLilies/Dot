@@ -1,6 +1,6 @@
 # Dot Files for Bash and ZSH
 
-These are some of my commonly used aliases. I like to maintain them in VCS so I can update them frequently. 
+Setting up your aliases and exports on a fresh computer is always a pain. This repo is meant to help set-up and retain all common aliases.
 
 ## Usage
 

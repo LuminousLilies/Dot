@@ -1,6 +1,10 @@
 [[ "${BASH_SOURCE[0]}" != "${0}" ]] && echo "Aliases are being sourced" || echo "Script is a subshell"
 DIR="$1"
 
+########## History #########
+HISTSIZE=9999
+alias hist="history | grep "
+
 ########## Git ##########
 alias gs="git status"
 alias gl="git log"

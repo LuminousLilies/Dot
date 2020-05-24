@@ -10,6 +10,16 @@ alias gs="git status"
 alias gl="git log"
 alias wrk="git checkout"
 alias gcb="git checkout -b"
+alias syncsubmodules="git submodule update --recursive --remote"
+alias initsubmodules="git submodule update --recursive --init"
+alias originbranch="git rev-parse --abbrev-ref --symbolic-full-name @{u}"
+
+safeoriginbranch () {
+  git for-each-ref --format='%(upstream:short)' "$(git symbolic-ref -q HEAD)"
+}
+alias echobranch="echo $(safeoriginbranch)"
+alias resethard="git reset --hard $(safeoriginbranch)"
+
 
 ########## Bash ##########
 alias sb=". $DIR/.aliases.sh $DIR"

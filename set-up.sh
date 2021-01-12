@@ -10,13 +10,17 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 # Go to Home
 cd ~; 
 
+# Set-up untracked files
+[[ ! -f "$DIR/.temp_aliases.sh" ]] || mv .temp_aliases.sh .temp_aliases.sh.bak
+[[ ! -f "$DIR/.computer_aliases.sh" ]] || mv .computer_aliases.sh .computer_aliases.sh.bak
+mv "$DIR/.temp_aliases.sh.example" "$DIR/.temp_aliases.sh"
+mv "$DIR/.computer_aliases.sh.example" "$DIR/.computer_aliases.sh"
+
 # Backup all existing dot files
 mv .aliases.sh .aliases.sh.bak
 mv .bashrc .bashrc.bak
-mv .computer_aliases.sh .computer_aliases.sh.bak
 mv .exports.sh .exports.sh.bak
 mv .profile.sh .profile.sh.bak
-mv .temp_aliases.sh .temp_aliases.sh.bak
 mv .zshrc .zshrc.bak
 
 # Create new Sym Links

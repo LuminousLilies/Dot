@@ -13,19 +13,19 @@ cd ~;
 # Backup all existing dot files
 mkdir -p "$DIR/backup"
 rm -rf "$DIR/backup/*"
-cp -L .temp_aliases.sh "$DIR/backup/.temp_aliases.sh.bak"
+cp -L .temp_aliases.sh "$DIR/backup/"
 rm .temp_aliases.sh
-cp -L .computer_aliases.sh "$DIR/backup/.computer_aliases.sh.bak"
+cp -L .computer_aliases.sh "$DIR/backup/"
 rm .computer_aliases.sh
-cp -L .aliases.sh "$DIR/backup/.aliases.sh.bak"
+cp -L .aliases.sh "$DIR/backup/"
 rm .aliases.sh
-cp -L .bashrc "$DIR/backup/.bashrc.bak"
+cp -L .bashrc "$DIR/backup/"
 rm .bashrc
-cp -L .exports.sh "$DIR/backup/.exports.sh.bak"
+cp -L .exports.sh "$DIR/backup/"
 rm .exports.sh
-cp -L .profile.sh "$DIR/backup/.profile.sh.bak"
+cp -L .profile.sh "$DIR/backup/"
 rm .profile.sh
-cp -L .zshrc "$DIR/backup/.zshrc.bak"
+cp -L .zshrc "$DIR/backup/"
 rm .zshrc
 
 # Set-up untracked files

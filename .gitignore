@@ -1,3 +1,4 @@
 .computer_aliases.sh
 .temp_aliases.sh
 *.bak
+/backup

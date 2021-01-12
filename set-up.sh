@@ -10,18 +10,27 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 # Go to Home
 cd ~; 
 
-# Set-up untracked files
-[[ ! -f "$DIR/.temp_aliases.sh" ]] || mv .temp_aliases.sh .temp_aliases.sh.bak
-[[ ! -f "$DIR/.computer_aliases.sh" ]] || mv .computer_aliases.sh .computer_aliases.sh.bak
-mv "$DIR/.temp_aliases.sh.example" "$DIR/.temp_aliases.sh"
-mv "$DIR/.computer_aliases.sh.example" "$DIR/.computer_aliases.sh"
-
 # Backup all existing dot files
-mv .aliases.sh .aliases.sh.bak
-mv .bashrc .bashrc.bak
-mv .exports.sh .exports.sh.bak
-mv .profile.sh .profile.sh.bak
-mv .zshrc .zshrc.bak
+mkdir -p "$DIR/backup"
+rm -rf "$DIR/backup/*"
+cp -L .temp_aliases.sh "$DIR/backup/.temp_aliases.sh.bak"
+rm .temp_aliases.sh
+cp -L .computer_aliases.sh "$DIR/backup/.computer_aliases.sh.bak"
+rm .computer_aliases.sh
+cp -L .aliases.sh "$DIR/backup/.aliases.sh.bak"
+rm .aliases.sh
+cp -L .bashrc "$DIR/backup/.bashrc.bak"
+rm .bashrc
+cp -L .exports.sh "$DIR/backup/.exports.sh.bak"
+rm .exports.sh
+cp -L .profile.sh "$DIR/backup/.profile.sh.bak"
+rm .profile.sh
+cp -L .zshrc "$DIR/backup/.zshrc.bak"
+rm .zshrc
+
+# Set-up untracked files
+cp "$DIR/.temp_aliases.sh.example" "$DIR/.temp_aliases.sh"
+cp "$DIR/.computer_aliases.sh.example" "$DIR/.computer_aliases.sh"
 
 # Create new Sym Links
 ln -s "$DIR/.aliases.sh" .aliases.sh

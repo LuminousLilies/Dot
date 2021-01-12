@@ -9,3 +9,6 @@ DIR="$1"
 [[ ! -f "$DIR/.exports.sh" ]] || . "$DIR/.exports.sh" $DIR
 [[ ! -f "$DIR/.temp_aliases.sh" ]] || . "$DIR/.temp_aliases.sh" $DIR
 [[ ! -f "$DIR/.computer_aliases.sh" ]] || . "$DIR/.computer_aliases.sh" $DIR
+
+########## Revert Tmp ##########
+alias revertTmp="[[ -f $DIR/backup/.temp_aliases.sh ]] && cat $DIR/backup/.temp_aliases.sh > $DIR/.temp_aliases.sh"

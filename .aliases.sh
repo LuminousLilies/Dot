@@ -17,6 +17,9 @@ safeoriginbranch () {
   git for-each-ref --format='%(upstream:short)' "$(git symbolic-ref -q HEAD)"
 }
 alias resethard="git reset --hard $(safeoriginbranch)"
+alias gitaudit='git ls-files | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
+alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
+
 
 
 ########## Bash ##########
@@ -55,3 +58,10 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias mkpdir='mkdir -pv'
+alias mkpdir='mkdir -pv'
+
+########## Function ##########
+HISTSIZE=5000
+hist() {
+  history | grep $1
+}

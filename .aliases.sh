@@ -16,7 +16,9 @@ alias originbranch="git rev-parse --abbrev-ref --symbolic-full-name @{u}"
 safeoriginbranch () {
   git for-each-ref --format='%(upstream:short)' "$(git symbolic-ref -q HEAD)"
 }
-alias resethard="git reset --hard $(safeoriginbranch)"
+resethard () {
+  git reset --hard $(safeoriginbranch)
+}
 alias gitaudit='git ls-files | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 

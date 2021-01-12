@@ -59,9 +59,3 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias mkpdir='mkdir -pv'
 alias mkpdir='mkdir -pv'
-
-########## Function ##########
-HISTSIZE=5000
-hist() {
-  history | grep $1
-}

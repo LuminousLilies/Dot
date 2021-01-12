@@ -7,8 +7,7 @@ Setting up your aliases and exports on a fresh computer is always a pain. This r
 You will only need to symlink the rc file for your shell. All the other files are dynamically sourced from the rc file.
 
 ```bash
-cd ~
-ln -s ${Path to this repo}/.zshrc .
+sh set-up.sh
 ```
 
 ## Computer specific aliases
@@ -20,4 +19,15 @@ Sometimes I have different aliases per computer. Work Computer has separate proj
 # .computer_aliases.sh
 
 alias proj="~/Projects/SomeProject"
+```
+
+## Temporary aliases
+
+Sometimes it's useful to have some temporary aliases. While working on a feature, sometimes I like to add some scripts to aliases to make repetitive things easier. This project automatically ignores changes made to `.temp_aliases.sh` and cleans them up everytime you load terminal for the first time.
+
+```bash
+#!/bin/bash
+# .temp_aliases.sh
+
+alias repetitive="npm i; npm run tests $SOME_DIR_I_WANT_TO_TEST"
 ```

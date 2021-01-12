@@ -1,8 +1,8 @@
 # Pass DIR in from RC files
 DIR="$1"
 
-# If loading first bash
-[[ $(ps ax | grep $$ | awk '{print $2}' | head -1) == s000 ]] && mv "$DIR/.temp_aliases.sh" "$DIR/.temp_aliases.sh.bak" && rm "$DIR/.temp_aliases.sh" && touch "$DIR/.temp_aliases.sh"
+# If loading first bash clean tmp file
+[[ $(ps ax | grep $$ | awk '{print $2}' | head -1) == s000 ]] && cp "$DIR/.temp_aliases.sh" "~/.temp_aliases.sh.bak" && : > "$DIR/.temp_aliases.sh" 
 
 # Pass DIR to the aliases to reference itself in aliases
 [[ ! -f "$DIR/.aliases.sh" ]] || . "$DIR/.aliases.sh" $DIR

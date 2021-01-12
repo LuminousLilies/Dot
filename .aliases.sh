@@ -28,6 +28,8 @@ alias cb="cat $DIR/.aliases.sh"
 alias fb="cb | grep"
 alias ecb="vim $DIR/.computer_aliases.sh"
 alias ccb="cat $DIR/.computer_aliases.sh"
+alias etb="vim $DIR/.temp_aliases.sh"
+alias ctb="cat $DIR/.temp_aliases.sh"
 alias scb=". $DIR/.computer_aliases.sh $DIR"
 alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; cd -;"
 

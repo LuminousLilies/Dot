@@ -1,0 +1,1 @@
+alias something="echo 'something'"

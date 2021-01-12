@@ -2,7 +2,7 @@
 DIR="$1"
 
 # If loading first bash clean tmp file
-[[ $(ps ax | grep $$ | awk '{print $2}' | head -1) == s000 ]] && cp -L "$DIR/.temp_aliases.sh" "~/.temp_aliases.sh.bak" && : > "$DIR/.temp_aliases.sh" 
+[[ $(ps ax | grep $$ | awk '{print $2}' | head -1) == s000 ]] && echo "Clearing temp aliases" && cp -L "$DIR/.temp_aliases.sh" ".temp_aliases.sh.bak" && : > "$DIR/.temp_aliases.sh" 
 
 # Pass DIR to the aliases to reference itself in aliases
 [[ ! -f "$DIR/.aliases.sh" ]] || . "$DIR/.aliases.sh" $DIR

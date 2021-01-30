@@ -12,3 +12,6 @@ DIR="$1"
 
 ########## Revert Tmp ##########
 alias revertTmp="[[ -f $DIR/backup/.temp_aliases.sh ]] && cat $DIR/backup/.temp_aliases.sh > $DIR/.temp_aliases.sh"
+
+########## Set-up SSH Agent ##########
+[[ -z "${SSH_AGENT_PID}" ]] && eval "$(ssh-agent -s)" && [[ -f "~/.ssh/id_ed25519" ]] && ssh-add -K ~/.ssh/id_ed25519 && echo "Starting SSH Agent"

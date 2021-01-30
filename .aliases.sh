@@ -38,6 +38,8 @@ alias ctb="cat $DIR/.temp_aliases.sh"
 alias scb=". $DIR/.computer_aliases.sh $DIR"
 alias stb=". $DIR/.temp_aliases.sh $DIR"
 alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; cd -;"
+alias sleepoff="caffeinate -disu &"
+alias sleepon="ps | grep caffeinate | awk '{print $1}' | head -1 | xargs kill -9"
 
 ########## LS ##########
 alias ls="ls -G"

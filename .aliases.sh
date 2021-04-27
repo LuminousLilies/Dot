@@ -46,7 +46,7 @@ alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; c
 alias sleepoff="caffeinate -disu &"
 alias sleepon="ps | grep caffeinate | awk '{print $1}' | head -1 | xargs kill -9"
 
-########## LS ##########
+########## SSH ##########
 alias deleteKeys="ssh-add -D"
 alias addkeys="[[ -f ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 && [[ -f ~/.ssh/id_rsa ]] && ssh-add ~/.ssh/id_rsa"
 

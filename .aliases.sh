@@ -7,7 +7,11 @@ alias hist="history | grep "
 
 ########## Git ##########
 alias gs="git status"
+ga () {
+find . -type d \( -path */node_modules -o -path directory2 \) -prune -false -o -type d -path "*/$1" | xargs git add
+}
 alias gl="git log"
+alias brl="git branch -l"
 alias wrk="git checkout"
 alias gcb="git checkout -b"
 alias syncsubmodules="git submodule update --recursive --remote"
@@ -21,7 +25,8 @@ resethard () {
 }
 alias gitaudit='git ls-files | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
-
+alias lostandfound='git fsck --full --no-reflogs --unreachable --lost-found | grep commit | cut -d\  -f3 | xargs -n 1 git log -n 1 --pretty=oneline'
+alias refcommits='git reflog | grep commit | cut -d\  -f1 | xargs -n 1 git log -n 1 --pretty=oneline'
 
 
 ########## Bash ##########
@@ -40,6 +45,10 @@ alias stb=". $DIR/.temp_aliases.sh $DIR"
 alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; git push; cd -;"
 alias sleepoff="caffeinate -disu &"
 alias sleepon="ps | grep caffeinate | awk '{print $1}' | head -1 | xargs kill -9"
+
+########## LS ##########
+alias deleteKeys="ssh-add -D"
+alias addkeys="[[ -f ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 && [[ -f ~/.ssh/id_rsa ]] && ssh-add ~/.ssh/id_rsa"
 
 ########## LS ##########
 alias ls="ls -G"

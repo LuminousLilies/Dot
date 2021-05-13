@@ -15,3 +15,5 @@ then
     export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
 fi
 ' --tag-name-filter cat -- --branches --tags -f
+
+git push --force --tags origin HEAD:master

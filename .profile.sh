@@ -17,3 +17,9 @@ alias revertTmp="[[ -f $DIR/backup/.temp_aliases.sh ]] && cat $DIR/backup/.temp_
 [[ -z "${SSH_AGENT_PID}" ]] && eval "$(ssh-agent -s)" 
 [[ ! $(ssh-add -l | cut -d" " -f4) == *ED25519* ]] && [[ -f ~/.ssh/id_ed25519 ]] && ssh-add -K ~/.ssh/id_ed25519 && echo "Adding ED25519 Key"
 [[ ! $(ssh-add -l | cut -d" " -f4) == *RSA* ]] && [[ -f ~/.ssh/id_rsa ]] && ssh-add -K ~/.ssh/id_rsa && echo "Adding RSA Key"
+
+########## Set-up git filter-repo ##########
+export PATH="${HOME}/bin:${PATH}"
+mkdir -p ~/bin
+curl https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo -o ~/bin/git-filter-repo 
+chmod +x ~/bin/git-filter-repo

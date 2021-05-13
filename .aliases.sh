@@ -27,6 +27,7 @@ alias gitaudit='git ls-files | while read f; do git blame --line-porcelain $f | 
 alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 alias lostandfound='git fsck --full --no-reflogs --unreachable --lost-found | grep commit | cut -d\  -f3 | xargs -n 1 git log -n 1 --pretty=oneline'
 alias refcommits='git reflog | grep commit | cut -d\  -f1 | xargs -n 1 git log -n 1 --pretty=oneline'
+alias gitcat='git cat-file -p'
 
 
 ########## Bash ##########
@@ -72,3 +73,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias mkpdir='mkdir -pv'
 alias mkpdir='mkdir -pv'
+cpy() {
+  echo "Copying \"$1\" to clipboard...";
+  $(cat "$1" | pbcopy); 
+}

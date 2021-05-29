@@ -20,6 +20,6 @@ alias revertTmp="[[ -f $DIR/backup/.temp_aliases.sh ]] && cat $DIR/backup/.temp_
 
 ########## Set-up git filter-repo ##########
 export PATH="${HOME}/bin:${PATH}"
-mkdir -p ~/bin
-curl https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo -o ~/bin/git-filter-repo 
-chmod +x ~/bin/git-filter-repo
+[[ ! -d "~/bin" ]] || mkdir -p ~/bin
+[[ ! -f "~/bin/git-filter-repo" ]] || curl https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo -o ~/bin/git-filter-repo 
+[[ ! -x "~/bin/git-filter-repog" ]] || chmod +x ~/bin/git-filter-repog

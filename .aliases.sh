@@ -28,6 +28,7 @@ alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame
 alias lostandfound='git fsck --full --no-reflogs --unreachable --lost-found | grep commit | cut -d\  -f3 | xargs -n 1 git log -n 1 --pretty=oneline'
 alias refcommits='git reflog | grep commit | cut -d\  -f1 | xargs -n 1 git log -n 1 --pretty=oneline'
 alias gitcat='git cat-file -p'
+alias gitdot='open https://github.com/LuminousLilies/Dot'
 
 
 ########## Bash ##########

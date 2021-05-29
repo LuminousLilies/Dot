@@ -1,1 +1,1 @@
-git filter-repo --use-mailmap
+[[ ! -f .mailmap ]] || git filter-repo --use-mailmap

@@ -5,6 +5,9 @@ DIR="$1"
 HISTSIZE=9999
 alias hist="history | grep "
 
+########## Internet #########
+alias coffeeconnect="sh $DIR/.coffeeconnect.sh"
+
 ########## Git ##########
 alias gs="git status"
 ga () {
@@ -68,6 +71,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+alias ........='echo "MORE DOTS!"'
 alias ~='cd ~'
 
 ########## Misc ##########

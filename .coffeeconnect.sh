@@ -1,0 +1,80 @@
+#!/usr/bin/env sh
+
+## All code in this file belongs to https://github.com/imwally/coffeeconnect.git
+
+# Set flags
+if [ "$1" = "-v" ]
+then
+        FLAGS="-v"
+else
+        FLAGS=""
+fi
+
+
+# Make sure we have a network connection
+if ! curl $FLAGS -s -o /dev/null http://www.duckduckgo.com
+then
+        echo "Can't resolve host. (Are you connected to the access point?)"
+        exit 1
+fi
+
+
+# Already authenticated?
+#
+# If redirected to https://duckduckgo.com from
+# http://www.duckduckgo.com we have already been authenticated.
+BEGIN_URL=$(curl $FLAGS -s -o /dev/null -w "%{redirect_url}" http://www.duckduckgo.com)
+if [ "$BEGIN_URL" = "https://duckduckgo.com/" ]
+then
+    exit 0
+fi
+
+
+# Start authentication redirect rodeo
+CHECK_URL=$(echo "$BEGIN_URL" | sed -E "s/\\?cmd=login/check\\?cmd=login/g")
+SIGNUP_URL=$(curl $FLAGS -s -o /dev/null -w "%{redirect_url}" "$CHECK_URL")
+
+
+# Have we submitted login data before?
+#
+# If not, we will be redirected to the "/signup?data=" page that
+# contains the Sign Up form.
+#
+# Use random personal data generated with
+# https://www.fakenamegenerator.com
+if echo $SIGNUP_URL | grep -q -o "/signup?data="
+then
+    LOGIN_PAGE=$(curl $FLAGS -s --data-urlencode fname="Mattie" \
+		      --data-urlencode lname="Parker" \
+		      --data-urlencode email="MattieRParker@jourrapide.com" \
+		      --data-urlencode postcode="20036" "$SIGNUP_URL")
+# If so, we are already redirected to the login page.
+else
+    LOGIN_PAGE=$(curl $FLAGS -s "$CHECK_URL")
+fi
+
+
+# Continue with initial or repeat login process by scraping the
+# device-specific generated user name and password values from the
+# hidden login form.
+LOGIN_USER=$(echo "$LOGIN_PAGE" | grep "user" | cut -d\" -f6)
+LOGIN_PASSWORD=$(echo "$LOGIN_PAGE" | grep "password" | cut -d\" -f6)
+LOGIN_URL="https://aruba.odyssys.net/cgi-bin/login"
+
+
+# Submit device-specific generated credentials and check if we
+# authenticated properly.
+AUTHENTICATED=$(curl $FLAGS -s --data-urlencode "cmd=authenticate" \
+		       --data-urlencode "user=$LOGIN_USER" \
+		       --data-urlencode "password=$LOGIN_PASSWORD" \
+		       --data-urlencode "url=https://wifi.starbucks.com/" \
+                       $LOGIN_URL)
+
+
+if [ -n "$AUTHENTICATED" ]
+then
+    exit 0
+else
+    echo "Connection failed."
+    exit 1
+fi

@@ -7,3 +7,8 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 [[ ! -f "$DIR/.profile.sh" ]] || . "$DIR/.profile.sh" $DIR
+
+### Ctrl Arrow Enabled
+bindkey -e
+bindkey '\e\e[C' forward-word
+bindkey '\e\e[D' backward-word 

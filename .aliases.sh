@@ -26,6 +26,7 @@ safeoriginbranch () {
 resethard () {
   git reset --hard $(safeoriginbranch)
 }
+alias clearhistory='echo "" > ~/.zsh_history & exec $SHELL -l'
 alias gitaudit='git ls-files | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 alias gitauditthis='git ls-files --directory $(pwd) | while read f; do git blame --line-porcelain $f | grep '"'"'^author '"'"'; done | sort -f | uniq -ic | sort -n'
 alias lostandfound='git fsck --full --no-reflogs --unreachable --lost-found | grep commit | cut -d\  -f3 | xargs -n 1 git log -n 1 --pretty=oneline'
@@ -49,7 +50,8 @@ alias stb=". $DIR/.temp_aliases.sh $DIR"
 alias fixcommits="sh fix_commits.sh"
 alias pushdot="cd $DIR; git add .; git commit -m \"Self Generated\"; fixcommits; git push \"git@github.com:LuminousLilies/Dot.git\" master -f; cd -;"
 alias sleepoff="caffeinate -disu &"
-alias sleepon="ps | grep caffeinate | awk '{print $1}' | head -1 | xargs kill -9"
+# awk '{print $1}' is broken on my computer for some reason. Replace cut if it works on yours.
+alias sleepon="ps | grep caffeinate  | cut -f1 -d' ' | head -1 | xargs kill -9"
 alias fb="cb | grep"
 alias ftb="ctb | grep"
 alias fcb="ccb | grep"

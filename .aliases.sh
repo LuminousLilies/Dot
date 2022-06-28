@@ -1,6 +1,8 @@
 [[ "${BASH_SOURCE[0]}" != "${0}" ]] && echo "Aliases are being sourced" || echo "Script is a subshell"
 DIR="$1"
 
+alias fontainebleau="open https://www.bergfreunde.eu/climbing-grade-calculator/"
+
 ########## History #########
 HISTSIZE=9999
 alias hist="history | grep "
@@ -77,6 +79,8 @@ alias ........='echo "MORE DOTS!"'
 alias ~='cd ~'
 
 ########## Misc ##########
+alias python='python3';
+alias pip="pip3";
 alias fc='ls | wc -l'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
